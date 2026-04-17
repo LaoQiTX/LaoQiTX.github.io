@@ -1,8 +1,9 @@
 menu:
   about: /about
+  friends: /friends
 favicon:
   enable: true
-  icon: /image/icon/vista_messenger.jpg
+  icon: /image/icon/laoqi_icon.png
 profile:
   enable: true
   author: ''

@@ -7,14 +7,14 @@ favicon:
 profile:
   enable: true
   author: ''
-  avatar: ''  # Your avatar image, for example, https://avatars.githubusercontent.com/username
+  avatar: '/image/icon/laoqi_icon.png'  # Your avatar image, for example, https://avatars.githubusercontent.com/username
   avatar_link: '' # The link you click on the avatar and jump to, for example, https://github.com/username
   social: # you can customize which and how many social links to show
     - name: Github
-      link: '' # https://github.com/username
+      link: 'https://github.com/LaoQiTX' # https://github.com/username
       icon: /image/icon/github.png
     - name: Bilibili
-      link: '' # https://space.bilibili.com/youruid
+      link: 'https://space.bilibili.com/456265464' # https://space.bilibili.com/youruid
       icon: /image/icon/bilibili.png
 music:
   enable: true

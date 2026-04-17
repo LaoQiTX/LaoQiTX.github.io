@@ -23,11 +23,14 @@ date: 2026-04-17 23:20:40
   border-radius: 50%;
   object-fit: cover;
 }
-.friend-card a {
+.friend-card .name {
   display: block;
   margin-top: 10px;
   font-weight: bold;
   color: #333;
+  text-decoration: none;
+}
+.friend-card a {
   text-decoration: none;
 }
 .friend-card .desc {
@@ -42,8 +45,10 @@ date: 2026-04-17 23:20:40
 <div class="friend-list">
 
   <div class="friend-card">
-    <img src="https://blog.lanouo.xyz/images/AAAASpring.jpg" alt="头像">
-    <a href="blog.lanouo.xyz">幽篁里</a>
+    <a href="https://blog.lanouo.xyz">
+      <img src="https://blog.lanouo.xyz/images/AAAASpring.jpg" alt="头像">
+      <div class="name">幽篁里</div>
+    </a>
     <div class="desc">学妹的学习日常</div>
   </div>
 

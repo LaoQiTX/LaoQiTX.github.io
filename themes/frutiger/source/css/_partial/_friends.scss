@@ -1,0 +1,100 @@
+.friend-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.friend-card {
+  padding: 15px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.friend-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.friend-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.friend-card:hover img {
+  transform: scale(1.05);
+}
+
+.friend-card .name {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.friend-card:hover .name {
+  color: #0066cc;
+}
+
+.friend-card a {
+  text-decoration: none;
+  display: block;
+}
+
+.friend-card .desc {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .friend-list {
+    grid-template-columns: 1fr;
+  }
+
+  .friend-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 10px 15px;
+  }
+
+  .friend-card a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .friend-card img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .friend-card .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .friend-card .name {
+    margin-top: 0;
+    margin-right: 0;
+    font-size: 14px;
+  }
+
+  .friend-card .desc {
+    margin-top: 2px;
+    margin-left: 0;
+    font-size: 12px;
+  }
+}

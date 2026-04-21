@@ -5,7 +5,7 @@ title: Hello World
 
 ## Quick Start
 
-### Create a new post
+### 创建新的文章
 
 ``` bash
 $ hexo new "My New Post"
@@ -27,12 +27,9 @@ More info: [Server](https://hexo.io/docs/server.html)
 $ hexo generate
 ```
 
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
+### 创建新的分页
 
 ``` bash
-$ hexo deploy
+$ hexo new page "My New Page"
 ```
 
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)

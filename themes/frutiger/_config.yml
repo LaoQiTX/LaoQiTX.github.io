@@ -23,7 +23,7 @@ music:
     - title: 'Letter'
       artist: 'Aliya'
       cover: 'https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg'
-      url: 'https://m701.music.126.net/20260418202457/9bea8ce0727999863dcdadc2942f0b19/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/44119056013/0cce/0805/d951/e72a2b8c10b0bea9a7c5daccf884ca51.mp3?vuutv=EEuCO0yu/EQajTNfrF4JzxyFnnfIG5MfsG92WJV3qKKLMV8wcmzjycJwvGhdvSh+GgkLH5CLRdhCRCKeARzGjnBBIyhudrx2Z+BkjpMH+KE='
+      url: '../music/letter.mp3'
 math:
   enable: true
   engine: mathjax

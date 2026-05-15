@@ -34,3 +34,9 @@ $ hexo generate
 $ hexo new page "My New Page"
 ```
 
+### 本地测试
+``` bash
+$ hexo clean
+$ hexo g
+$ hexo s
+```

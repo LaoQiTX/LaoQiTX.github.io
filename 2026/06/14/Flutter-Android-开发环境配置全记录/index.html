@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>
+        LaoQi的秘密基地
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+            <link rel="icon" href="/image/icon/laoqi_icon.png">
+        
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header" id="pjax-header">
+    <header class="card">
+        <p class="blog-title">
+            happily coding
+        </p>
+    </header>
+    <nav class="button-bar">
+        <ul class="nav-links">
+            <li>
+                <a href="/" class="button link-home ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_messenger.jpg" alt="home" class="icon">
+                        <span>Home</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives    
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_pc_1.jpg" alt="about" class="icon">About
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/friends" class="button ">
+                    <span class="nav-text">
+                        <!-- <img src="/image/icon/vista_friend_1.jpg" alt="friends" class="icon"> -->
+                        Friends
+                    </span>
+                </a>
+            </li>
+            
+        </ul>
+
+    </nav>
+</div>
+
+        <div class="button mobile-menu-btn" id="mobile-menu-btn">
+            <span class="menu-icon ri-menu-fill"></span>
+        </div>
+
+            <div class="main-layout">
+                <aside id="sidebar">
+                    <div class="widget avatar-widget">
+    <div class="avatar-bg">
+        <a href="/">
+            <img src="/image/icon/laoqi_icon.png" class="profile-img">
+        </a>
+    </div>
+</div>
+<div class="widget card profile-widget">
+    <div class="profile">
+        <div>LaoQi</div>
+        <div>
+            
+            
+                <a href="https://github.com/LaoQiTX" class="button profile-link" target="_blank" title="Github">
+                    <img src="/image/icon/github.png" class="profile-icon" alt="Github">
+                </a>
+            
+                <a href="https://space.bilibili.com/456265464" class="button profile-link" target="_blank" title="Bilibili">
+                    <img src="/image/icon/bilibili.png" class="profile-icon" alt="Bilibili">
+                </a>
+            
+        
+        </div>
+    </div>
+    <div class="about">
+        个人博客
+    </div>
+</div>
+
+
+<div class="widget music-widget">
+    <div class="player-content">
+        <div class="song-info">
+            <div class="info-bg album-art" id="albumArt"></div>
+            <div class="info-bg title-bar">
+                <span class="song-title" id="songTitle">Loading...</span>
+            </div>
+        </div>
+
+        <div class="info-bg progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="controls">
+            <button class="button play-btn" id="playBtn">
+                <span id="playIcon" class="ri-play-large-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="prevBtn">
+                <span class="ri-skip-back-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="nextBtn">
+                <span class="ri-skip-forward-fill"></span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+</div>
+
+<script>
+    var musicConfig = {
+        autoplay: false,
+        playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
+    };
+</script>
+                </aside>
+                <main id="pjax-container">
+                    <div class="card post-full">
+    <span class="post-title article-title">
+        Flutter Android 开发环境配置全记录
+    </span>
+
+    <div class="post-meta">
+        2026-06-14
+        
+            | <a class="tag-none-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-none-link" href="/tags/Flutter/" rel="tag">Flutter</a>
+            
+    </div>
+
+    <div class="post-content">
+        <h1>Flutter Android 开发环境配置全记录</h1>
+<blockquote>
+<p>本文记录了从零开始配置 Flutter Android 开发环境的完整过程，包含踩过的坑和对应解决方案。适合有编程基础（Python / JS / Vue）但没有移动端经验的开发者参考。</p>
+<p>系统环境：Windows，所有工具安装在 F 盘。</p>
+</blockquote>
+<hr>
+<h2 id="目录">目录</h2>
+<ol>
+<li><a href="#%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF">整体思路</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">第一步：创建目录结构</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">第二步：配置系统环境变量</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%AE%89%E8%A3%85-git">第三步：安装 Git</a></li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E5%AE%89%E8%A3%85-flutter-sdk">第四步：安装 Flutter SDK</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%E5%AE%89%E8%A3%85-android-studio">第五步：安装 Android Studio</a></li>
+<li><a href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%E9%85%8D%E7%BD%AE-gradle-%E9%95%9C%E5%83%8F">第六步：配置 Gradle 镜像</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%E5%85%B3%E8%81%94-flutter-%E4%B8%8E-android-sdk">第七步：关联 Flutter 与 Android SDK</a></li>
+<li><a href="#%E7%AC%AC%E5%85%AB%E6%AD%A5%E9%AA%8C%E8%AF%81%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE">第八步：验证与运行第一个项目</a></li>
+<li><a href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">遇到的问题与解决方案</a></li>
+</ol>
+<hr>
+<h2 id="整体思路">整体思路</h2>
+<p>Flutter Android 开发涉及 <strong>4 套独立的网络下载</strong>，国内都需要配置镜像才能正常使用：</p>
+<table>
+<thead>
+<tr>
+<th>下载内容</th>
+<th>镜像方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flutter SDK 本体</td>
+<td><code>FLUTTER_STORAGE_BASE_URL</code> 环境变量</td>
+</tr>
+<tr>
+<td>Pub 第三方依赖包</td>
+<td><code>PUB_HOSTED_URL</code> 环境变量</td>
+</tr>
+<tr>
+<td>Gradle 依赖库（Maven）</td>
+<td><code>init.gradle</code> 全局配置</td>
+</tr>
+<tr>
+<td>Gradle 本体 ZIP</td>
+<td><code>gradle-wrapper.properties</code> 替换下载源</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>重要：先配镜像，再安装工具</strong>，否则下载会超时或极慢。</p>
+</blockquote>
+<p>默认情况下 Android Studio 相关工具会占用 C 盘 10GB 以上，建议全部安装到其他盘：</p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>默认位置</th>
+<th>占用大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android Studio IDE</td>
+<td>C:\Program Files</td>
+<td>~1.5 GB</td>
+</tr>
+<tr>
+<td>Android SDK</td>
+<td>C:\Users\用户名\AppData\Local\Android</td>
+<td>~3–5 GB</td>
+</tr>
+<tr>
+<td>AVD 模拟器镜像</td>
+<td>C:\Users\用户名.android\avd</td>
+<td>~3–8 GB</td>
+</tr>
+<tr>
+<td>Gradle 缓存</td>
+<td>C:\Users\用户名.gradle</td>
+<td>~1–3 GB</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="第一步：创建目录结构">第一步：创建目录结构</h2>
+<p>在 F 盘提前建好统一的目录结构，便于后续管理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">F:\AndroidStudio\       ← Android Studio IDE 本体<br>F:\Android\SDK\         ← Android SDK<br>F:\Android\AVD\         ← 模拟器镜像<br>F:\Android\Gradle\      ← Gradle 缓存<br>F:\dev\flutter\         ← Flutter SDK<br>F:\dev\projects\        ← 你的项目<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>路径中不能含有<strong>中文</strong>和<strong>空格</strong>，否则部分工具会报路径解析错误。</p>
+</blockquote>
+<hr>
+<h2 id="第二步：配置系统环境变量">第二步：配置系统环境变量</h2>
+<p>打开方式：控制面板 → 系统 → 高级系统设置 → 环境变量 → 系统变量</p>
+<h3 id="新建以下-4-条变量">新建以下 4 条变量</h3>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FLUTTER_STORAGE_BASE_URL</code></td>
+<td><code>https://storage.flutter-io.cn</code></td>
+<td>Flutter SDK 下载镜像</td>
+</tr>
+<tr>
+<td><code>PUB_HOSTED_URL</code></td>
+<td><code>https://pub.flutter-io.cn</code></td>
+<td>Pub 包管理镜像</td>
+</tr>
+<tr>
+<td><code>ANDROID_AVD_HOME</code></td>
+<td><code>F:\Android\AVD</code></td>
+<td>模拟器存储路径</td>
+</tr>
+<tr>
+<td><code>GRADLE_USER_HOME</code></td>
+<td><code>F:\Android\Gradle</code></td>
+<td>Gradle 缓存路径</td>
+</tr>
+</tbody>
+</table>
+<h3 id="在-Path-中新增一条">在 Path 中新增一条</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">F:\dev\flutter\bin<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ 配置完环境变量后，必须<strong>重新开一个 PowerShell 窗口</strong>才能生效，不能在原窗口继续操作。</p>
+</blockquote>
+<hr>
+<h2 id="第三步：安装-Git">第三步：安装 Git</h2>
+<p>Flutter 依赖 Git 管理 SDK。前往 <a target="_blank" rel="noopener" href="https://git-scm.com">git-scm.com</a> 下载安装。</p>
+<p>安装时选择：<code>Git from the command line and also from 3rd-party software</code></p>
+<p>验证安装：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git <span class="hljs-literal">--version</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="第四步：安装-Flutter-SDK">第四步：安装 Flutter SDK</h2>
+<ol>
+<li>前往 <a target="_blank" rel="noopener" href="https://flutter.cn/docs/get-started/install/windows">flutter.cn</a> 下载最新稳定版 ZIP</li>
+<li>解压到 <code>F:\dev\flutter\</code>（注意路径无中文、无空格）</li>
+<li>已将 <code>F:\dev\flutter\bin</code> 加入 Path（第二步已完成）</li>
+</ol>
+<p>验证安装（新开 PowerShell）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter <span class="hljs-literal">--version</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="第五步：安装-Android-Studio">第五步：安装 Android Studio</h2>
+<h3 id="5-1-安装-IDE-本体">5.1 安装 IDE 本体</h3>
+<p>前往 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio">developer.android.google.cn/studio</a> 下载安装包。</p>
+<p>安装向导第二步 <strong>Choose Install Location</strong> 改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">F:\AndroidStudio<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-首次启动配置-SDK-路径">5.2 首次启动配置 SDK 路径</h3>
+<p>首次启动进入 Setup Wizard，在 SDK 路径一栏填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">F:\Android\SDK<br></code></pre></td></tr></table></figure>
+<p>勾选安装：</p>
+<ul>
+<li>Android SDK</li>
+<li>Android SDK Platform-Tools</li>
+<li>Android Emulator</li>
+</ul>
+<h3 id="5-3-安装-Flutter-插件">5.3 安装 Flutter 插件</h3>
+<p>Settings → Plugins → 搜索 <code>Flutter</code> → Install</p>
+<blockquote>
+<p>Dart 插件会随 Flutter 自动安装，安装完成后重启 Android Studio。</p>
+</blockquote>
+<h3 id="5-4-验证-SDK-路径">5.4 验证 SDK 路径</h3>
+<p>Settings → Languages &amp; Frameworks → Android SDK → 确认 SDK Location 为 <code>F:\Android\SDK</code></p>
+<hr>
+<h2 id="第六步：配置-Gradle-镜像">第六步：配置 Gradle 镜像</h2>
+<p><code>flutter run</code> 首次编译时会通过 Gradle 下载大量依赖，国内不配镜像会极慢甚至超时。</p>
+<h3 id="全局-init-gradle（对所有项目生效）">全局 init.gradle（对所有项目生效）</h3>
+<p>新建文件 <code>F:\Android\Gradle\init.gradle</code>，写入：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs groovy">allprojects &#123;<br>    repositories &#123;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/google&#x27;</span> &#125;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/central&#x27;</span> &#125;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/gradle-plugin&#x27;</span> &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>因为第二步已将 <code>GRADLE_USER_HOME</code> 设为 <code>F:\Android\Gradle\</code>，Gradle 会自动读取该目录下的 <code>init.gradle</code>。</p>
+</blockquote>
+<h3 id="可选：Gradle-本体下载加速">可选：Gradle 本体下载加速</h3>
+<p>如果首次 <code>flutter run</code> 卡在下载 Gradle ZIP，打开项目中的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">android/gradle/wrapper/gradle-wrapper.properties<br></code></pre></td></tr></table></figure>
+<p>将 <code>distributionUrl</code> 一行替换为（版本号保持原文件一致）：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">distributionUrl</span>=<span class="hljs-string">https\://mirrors.cloud.tencent.com/gradle/gradle-8.3-all.zip</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="第七步：关联-Flutter-与-Android-SDK">第七步：关联 Flutter 与 Android SDK</h2>
+<h3 id="7-1-告诉-Flutter-Android-SDK-的位置">7.1 告诉 Flutter Android SDK 的位置</h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter config <span class="hljs-literal">--android-sdk</span> F:\Android\SDK<br></code></pre></td></tr></table></figure>
+<h3 id="7-2-接受-Android-许可证">7.2 接受 Android 许可证</h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter doctor <span class="hljs-literal">--android-licenses</span><br></code></pre></td></tr></table></figure>
+<p>逐一输入 <code>y</code> 回车确认所有许可证。</p>
+<hr>
+<h2 id="第八步：验证与运行第一个项目">第八步：验证与运行第一个项目</h2>
+<h3 id="8-1-运行-flutter-doctor">8.1 运行 flutter doctor</h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter doctor<br></code></pre></td></tr></table></figure>
+<p>需要以下三项显示绿色 ✓：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[✓] Flutter<br>[✓] Android toolchain<br>[✓] Android Studio<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>Chrome 和 Visual Studio 报红叉可以忽略，不影响 Android 开发。</p>
+</blockquote>
+<h3 id="8-2-创建-Android-模拟器（AVD）">8.2 创建 Android 模拟器（AVD）</h3>
+<p>Android Studio → Tools → Device Manager → <code>+</code> → Create Virtual Device</p>
+<p>推荐配置：</p>
+<ul>
+<li>Hardware：<strong>Pixel 6</strong></li>
+<li>System Image：<strong>API 34（Android 14），Google Play 版</strong></li>
+<li>RAM：建议 4GB</li>
+</ul>
+<h3 id="8-3-创建并运行第一个项目">8.3 创建并运行第一个项目</h3>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter create my_app<br><span class="hljs-built_in">cd</span> my_app<br>flutter run<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>首次运行会下载 Gradle 本体，国内大约需要 5~15 分钟，耐心等待即可。</p>
+</blockquote>
+<hr>
+<h2 id="遇到的问题与解决方案">遇到的问题与解决方案</h2>
+<h3 id="❌-问题：flutter-doctor-android-licenses-报错-sdkmanager-not-found">❌ 问题：flutter doctor --android-licenses 报错 sdkmanager not found</h3>
+<p><strong>报错信息：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Android sdkmanager not found. Update to the latest Android SDK and ensure that<br>the cmdline-tools are installed to resolve this.<br></code></pre></td></tr></table></figure>
+<p><strong>原因：</strong> Android SDK Command-line Tools 没有安装，<code>flutter doctor --android-licenses</code> 依赖该工具。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>打开 Android Studio</li>
+<li>Settings → Languages &amp; Frameworks → Android SDK → 点击 <strong>SDK Tools</strong> 标签</li>
+<li>勾选 <strong>Android SDK Command-line Tools (latest)</strong></li>
+<li>点击 OK，等待下载完成</li>
+<li>重新运行：</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter doctor <span class="hljs-literal">--android-licenses</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="最终目录结构">最终目录结构</h2>
+<p>配置完成后，F 盘结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">F:\<br>├── AndroidStudio\          ← IDE 本体<br>├── Android\<br>│   ├── SDK\                ← Android SDK + cmdline-tools<br>│   ├── AVD\                ← 模拟器镜像<br>│   └── Gradle\<br>│       └── init.gradle     ← 全局 Gradle 镜像配置<br>└── dev\<br>    ├── flutter\            ← Flutter SDK<br>    └── projects\           ← 你的项目<br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li>Flutter 中文文档：<a target="_blank" rel="noopener" href="https://flutter.cn">flutter.cn</a></li>
+<li>Flutter 中国镜像说明：<a target="_blank" rel="noopener" href="https://flutter.cn/community/china">flutter.cn/community/china</a></li>
+<li>Android Studio 下载：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio">developer.android.google.cn/studio</a></li>
+<li>阿里云 Maven 镜像：<a target="_blank" rel="noopener" href="https://maven.aliyun.com">maven.aliyun.com</a></li>
+</ul>
+<hr>
+<p><em>作者：LaoQi · <a href="https://blog.qitongxue.online/">LaoQi的秘密基地</a></em></p>
+
+    </div>
+</div>
+                </main>
+                <div class="sidebar-mask" id="sidebar-mask"></div>
+            </div>
+            <!-- footer -->
+            <footer class="card">
+    <div class="copyright">
+        <p>Copyright © 2026
+                LaoQi
+        </p>
+        <p>Powered by Hexo</p>
+    </div>
+</footer>
+    </div>
+
+    <script src="/js/responsive.js"></script>
+    <script src="/js/music.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new Pjax({
+                elements: 'a[href]:not([target]):not([data-no-pjax])',
+                selectors: [
+                    'title',
+                    '#pjax-container',
+                    '#pjax-header'
+                ]
+            })
+        })
+    </script>
+    
+</body>
+
+</html>

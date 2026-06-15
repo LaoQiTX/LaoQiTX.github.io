@@ -329,12 +329,21 @@
 <blockquote>
 <p>因为第二步已将 <code>GRADLE_USER_HOME</code> 设为 <code>F:\Android\Gradle\</code>，Gradle 会自动读取该目录下的 <code>init.gradle</code>。</p>
 </blockquote>
-<h3 id="可选：Gradle-本体下载加速">可选：Gradle 本体下载加速</h3>
+<h3 id="可选：（当上一步冲突导致下载失败时）Gradle-本体下载加速">可选：（当上一步冲突导致下载失败时）Gradle 本体下载加速</h3>
 <p>如果首次 <code>flutter run</code> 卡在下载 Gradle ZIP，打开项目中的：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">android/gradle/wrapper/gradle-wrapper.properties<br></code></pre></td></tr></table></figure>
 <p>将 <code>distributionUrl</code> 一行替换为（版本号保持原文件一致）：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">distributionUrl</span>=<span class="hljs-string">https\://mirrors.cloud.tencent.com/gradle/gradle-8.3-all.zip</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">distributionUrl</span>=<span class="hljs-string">https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-all.zip</span><br></code></pre></td></tr></table></figure>
 <hr>
+<h4 id="版本不稳定导致出现不兼容时">版本不稳定导致出现不兼容时</h4>
+<p>推荐改成稳定版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">AGP: 8.6.0<br>Gradle: 8.7<br>Kotlin: 1.9.22<br>JDK: 17<br></code></pre></td></tr></table></figure>
+<p>同样需要先打开项目中的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">android/gradle/wrapper/gradle-wrapper.properties<br></code></pre></td></tr></table></figure>
+<p>将 <code>distributionUrl</code> 一行替换为（版本号保持原文件一致）：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">distributionUrl</span>=<span class="hljs-string">https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-all.zip</span><br></code></pre></td></tr></table></figure>
+<p>把<code>android/settings.gradle.kts</code>内的<code>plugins</code>部分改成如下：</p>
+<figure class="highlight kts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kts">plugins &#123;<br>    id(<span class="hljs-string">&quot;dev.flutter.flutter-plugin-loader&quot;</span>) version <span class="hljs-string">&quot;1.0.0&quot;</span><br>    id(<span class="hljs-string">&quot;com.android.application&quot;</span>) version <span class="hljs-string">&quot;8.6.0&quot;</span> apply <span class="hljs-literal">false</span><br>    id(<span class="hljs-string">&quot;org.jetbrains.kotlin.android&quot;</span>) version <span class="hljs-string">&quot;1.9.22&quot;</span> apply <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="第七步：关联-Flutter-与-Android-SDK">第七步：关联 Flutter 与 Android SDK</h2>
 <h3 id="7-1-告诉-Flutter-Android-SDK-的位置">7.1 告诉 Flutter Android SDK 的位置</h3>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">flutter config <span class="hljs-literal">--android-sdk</span> F:\Android\SDK<br></code></pre></td></tr></table></figure>
@@ -391,7 +400,7 @@
 <li>阿里云 Maven 镜像：<a target="_blank" rel="noopener" href="https://maven.aliyun.com">maven.aliyun.com</a></li>
 </ul>
 <hr>
-<p><em>作者：LaoQi · <a href="https://blog.qitongxue.online/">LaoQi的秘密基地</a></em></p>
+<p><em>作者：LaoQi ·</em> <em><a href="https://blog.qitongxue.online/">LaoQi的秘密基地</a></em></p>
 
     </div>
 </div>

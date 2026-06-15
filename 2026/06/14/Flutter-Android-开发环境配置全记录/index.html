@@ -323,7 +323,7 @@
 <hr>
 <h2 id="第六步：配置-Gradle-镜像">第六步：配置 Gradle 镜像</h2>
 <p><code>flutter run</code> 首次编译时会通过 Gradle 下载大量依赖，国内不配镜像会极慢甚至超时。</p>
-<h3 id="全局-init-gradle（对所有项目生效）">全局 init.gradle（对所有项目生效）</h3>
+<h3 id="全局-init-gradle（全局生效，但可能导致gradle冲突）">全局 init.gradle（全局生效，但可能导致gradle冲突）</h3>
 <p>新建文件 <code>F:\Android\Gradle\init.gradle</code>，写入：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs groovy">allprojects &#123;<br>    repositories &#123;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/google&#x27;</span> &#125;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/central&#x27;</span> &#125;<br>        maven &#123; url <span class="hljs-string">&#x27;https://maven.aliyun.com/repository/gradle-plugin&#x27;</span> &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <blockquote>

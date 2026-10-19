@@ -138,19 +138,21 @@
     <audio id="audioPlayer"></audio>
 </div>
 
-
-
-
-<div class="widget sidebar-toc-widget">
-    <div class="sidebar-toc-header">
-        <i class="ri-list-check-2"></i> 目录导航
+<div id="pjax-toc">
+    
+    
+    
+    <div class="widget sidebar-toc-widget">
+        <div class="sidebar-toc-header">
+            <i class="ri-list-check-2"></i> 目录导航
+        </div>
+        <div class="sidebar-toc-content">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%96%87%E7%AB%A0"><span class="post-toc-text">创建新的文章</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E5%88%86%E9%A1%B5"><span class="post-toc-text">创建新的分页</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="post-toc-text">本地测试</span></a></li></ol></li></ol>
+        </div>
     </div>
-    <div class="sidebar-toc-content">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%96%87%E7%AB%A0"><span class="post-toc-text">创建新的文章</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E5%88%86%E9%A1%B5"><span class="post-toc-text">创建新的分页</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="post-toc-text">本地测试</span></a></li></ol></li></ol>
-    </div>
+    
+    
 </div>
-
-
 
 <script>
     var musicConfig = {
@@ -273,7 +275,8 @@
                 selectors: [
                     'title',
                     '#pjax-container',
-                    '#pjax-header'
+                    '#pjax-header',
+                    '#pjax-toc'
                 ]
             })
         })

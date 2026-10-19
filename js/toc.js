@@ -10,6 +10,14 @@
             observer = null;
         }
 
+        // 双重保障：如果不是文章页，确保清空 TOC 容器
+        const isPost = document.querySelector('.post-full .post-meta') !== null;
+        const pjaxToc = document.getElementById('pjax-toc');
+        if (!isPost && pjaxToc) {
+            pjaxToc.innerHTML = '';
+            return;
+        }
+
         const tocLinks = document.querySelectorAll('.post-toc-link');
         if (!tocLinks || tocLinks.length === 0) return;
 

@@ -138,19 +138,21 @@
     <audio id="audioPlayer"></audio>
 </div>
 
-
-
-
-<div class="widget sidebar-toc-widget">
-    <div class="sidebar-toc-header">
-        <i class="ri-list-check-2"></i> 目录导航
+<div id="pjax-toc">
+    
+    
+    
+    <div class="widget sidebar-toc-widget">
+        <div class="sidebar-toc-header">
+            <i class="ri-list-check-2"></i> 目录导航
+        </div>
+        <div class="sidebar-toc-content">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2025%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93"><span class="post-toc-text">2025年终总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E6%9C%88"><span class="post-toc-text">1月</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2%E6%9C%88"><span class="post-toc-text">2月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3%E6%9C%88"><span class="post-toc-text">3月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4%E6%9C%88"><span class="post-toc-text">4月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5%E6%9C%88"><span class="post-toc-text">5月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6%E6%9C%88"><span class="post-toc-text">6月</span></a></li></ol>
+        </div>
     </div>
-    <div class="sidebar-toc-content">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2025%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93"><span class="post-toc-text">2025年终总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1%E6%9C%88"><span class="post-toc-text">1月</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2%E6%9C%88"><span class="post-toc-text">2月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3%E6%9C%88"><span class="post-toc-text">3月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4%E6%9C%88"><span class="post-toc-text">4月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5%E6%9C%88"><span class="post-toc-text">5月</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6%E6%9C%88"><span class="post-toc-text">6月</span></a></li></ol>
-    </div>
+    
+    
 </div>
-
-
 
 <script>
     var musicConfig = {
@@ -341,7 +343,8 @@
                 selectors: [
                     'title',
                     '#pjax-container',
-                    '#pjax-header'
+                    '#pjax-header',
+                    '#pjax-toc'
                 ]
             })
         })

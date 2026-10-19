@@ -377,12 +377,18 @@ nav {
 
 /* ── 侧边栏 TOC ─────────────────────────────────────── */
 .sidebar-toc-widget {
+  position: sticky;
+  top: 320px;
+  z-index: 3;
   margin-top: 16px;
   border-radius: 6px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 0.5px var(--black-main), 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: calc(100vh - 340px);
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-toc-header {
@@ -1221,11 +1227,12 @@ footer {
     max-width: 95vw;
   }
   .sidebar-toc-widget {
-    max-height: 200px;
-    overflow: hidden;
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
   .sidebar-toc-content {
-    max-height: 140px;
+    max-height: 200px;
   }
 }
 .post-content .hbe-input-label-default::before {

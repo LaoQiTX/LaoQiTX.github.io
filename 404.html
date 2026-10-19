@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:(  404 - 页面不存在</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1469c7;
+            color: #ffffff;
+            font-family: "Segoe UI", "Segoe WP", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10vh 8vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 隐约的 Vista 光晕效果 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30%;
+            left: -20%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 40%, rgba(90, 160, 255, 0.25) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse at 70% 60%, rgba(50, 100, 200, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .sad-face {
+            font-size: clamp(60px, 12vw, 130px);
+            font-weight: 200;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -4px;
+        }
+
+        .error-code-line {
+            font-size: clamp(12px, 2.2vw, 18px);
+            margin-top: 32px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .error-title {
+            font-size: clamp(14px, 2.5vw, 20px);
+            font-weight: 400;
+            margin-bottom: 28px;
+            max-width: 640px;
+            line-height: 1.5;
+            opacity: 0.88;
+        }
+
+        .error-desc {
+            font-size: clamp(12px, 1.8vw, 15px);
+            line-height: 1.8;
+            max-width: 560px;
+            opacity: 0.75;
+            margin-bottom: 36px;
+        }
+
+        .error-desc p {
+            margin-bottom: 6px;
+        }
+
+        /* 进度条区域 */
+        .progress-section {
+            margin-bottom: 36px;
+        }
+
+        .progress-label {
+            font-size: clamp(11px, 1.6vw, 13px);
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-outer {
+            width: 280px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 3px;
+            width: 0%;
+            animation: progress-fill 4s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+        }
+
+        @keyframes progress-fill {
+            0%   { width: 0%; }
+            20%  { width: 45%; }
+            45%  { width: 47%; }
+            70%  { width: 82%; }
+            90%  { width: 100%; }
+            100% { width: 100%; }
+        }
+
+        /* 返回按钮 */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.18s ease, border-color 0.18s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.28);
+            border-color: rgba(255, 255, 255, 0.65);
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.88);
+            color: #1469c7;
+            font-weight: 600;
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            background: #ffffff;
+            color: #1469c7;
+        }
+
+        /* 错误码 & QR 区域（右下角装饰） */
+        .corner-info {
+            position: fixed;
+            bottom: 5vh;
+            right: 5vw;
+            text-align: right;
+            opacity: 0.45;
+            font-size: 11px;
+            line-height: 1.8;
+            font-family: "Consolas", "Courier New", monospace;
+        }
+
+        /* 计时器文字 */
+        .countdown-text {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 14px;
+        }
+
+        /* 分隔线 */
+        .divider {
+            width: 48px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 2px;
+            margin: 28px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sad-face">:(</div>
+
+    <div class="error-code-line">
+        STOP CODE: &nbsp;<strong>PAGE_NOT_FOUND</strong>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="error-title">
+        你访问的页面好像坠入了虚空，或者从未存在过。
+    </div>
+
+    <div class="error-desc">
+        <p>&#9670; 请检查 URL 是否正确</p>
+        <p>&#9670; 该文章可能已被删除或移动</p>
+        <p>&#9670; 可以返回首页重新探索</p>
+    </div>
+
+    <div class="progress-section">
+        <div class="progress-label">正在收集错误信息... (100%)</div>
+        <div class="progress-bar-outer">
+            <div class="progress-bar-inner"></div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a href="/" class="btn btn-primary">&#8962; 返回首页</a>
+        <a href="javascript:history.back()" class="btn">&#8592; 返回上一页</a>
+        <a href="/archives" class="btn">&#128196; 浏览所有文章</a>
+    </div>
+
+    <div class="countdown-text" id="countdown-text">
+        将在 <span id="countdown">10</span> 秒后自动返回首页...
+    </div>
+
+    <div class="corner-info">
+        HTTP 404 NOT FOUND<br>
+        LaoQi的秘密基地<br>
+        blog.qitongxue.online
+    </div>
+
+    <script>
+        // 倒计时自动跳转
+        var sec = 10;
+        var el = document.getElementById('countdown');
+        var timer = setInterval(function () {
+            sec--;
+            if (el) el.textContent = sec;
+            if (sec <= 0) {
+                clearInterval(timer);
+                window.location.href = '/';
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>

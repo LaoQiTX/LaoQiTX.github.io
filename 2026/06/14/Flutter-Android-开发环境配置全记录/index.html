@@ -15,6 +15,7 @@
             <link rel="icon" href="/image/icon/laoqi_icon.png">
         
     
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
@@ -42,7 +43,7 @@
             <li>
                 <a href="/archives" class="button ">
                     <span class="nav-text">
-                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives    
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
                     </span>
                 </a>
             </li>
@@ -56,14 +57,19 @@
             <li>
                 <a href="/friends" class="button ">
                     <span class="nav-text">
-                        <!-- <img src="/image/icon/vista_friend_1.jpg" alt="friends" class="icon"> -->
-                        Friends
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
                     </span>
                 </a>
             </li>
-            
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
         </ul>
-
     </nav>
 </div>
 
@@ -71,9 +77,9 @@
             <span class="menu-icon ri-menu-fill"></span>
         </div>
 
-            <div class="main-layout">
-                <aside id="sidebar">
-                    <div class="widget avatar-widget">
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
     <div class="avatar-bg">
         <a href="/">
             <img src="/image/icon/laoqi_icon.png" class="profile-img">
@@ -132,24 +138,39 @@
     <audio id="audioPlayer"></audio>
 </div>
 
+
+
+
+<div class="widget sidebar-toc-widget">
+    <div class="sidebar-toc-header">
+        <i class="ri-list-check-2"></i> 目录导航
+    </div>
+    <div class="sidebar-toc-content">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link"><span class="post-toc-text">Flutter Android 开发环境配置全记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="post-toc-text">整体思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="post-toc-text">第一步：创建目录结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-text">第二步：配置系统环境变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BA%E4%BB%A5%E4%B8%8B-4-%E6%9D%A1%E5%8F%98%E9%87%8F"><span class="post-toc-text">新建以下 4 条变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8-Path-%E4%B8%AD%E6%96%B0%E5%A2%9E%E4%B8%80%E6%9D%A1"><span class="post-toc-text">在 Path 中新增一条</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85-Git"><span class="post-toc-text">第三步：安装 Git</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85-Flutter-SDK"><span class="post-toc-text">第四步：安装 Flutter SDK</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85-Android-Studio"><span class="post-toc-text">第五步：安装 Android Studio</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-%E5%AE%89%E8%A3%85-IDE-%E6%9C%AC%E4%BD%93"><span class="post-toc-text">5.1 安装 IDE 本体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE-SDK-%E8%B7%AF%E5%BE%84"><span class="post-toc-text">5.2 首次启动配置 SDK 路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-%E5%AE%89%E8%A3%85-Flutter-%E6%8F%92%E4%BB%B6"><span class="post-toc-text">5.3 安装 Flutter 插件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-%E9%AA%8C%E8%AF%81-SDK-%E8%B7%AF%E5%BE%84"><span class="post-toc-text">5.4 验证 SDK 路径</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE-Gradle-%E9%95%9C%E5%83%8F"><span class="post-toc-text">第六步：配置 Gradle 镜像</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%A8%E5%B1%80-init-gradle%EF%BC%88%E5%85%A8%E5%B1%80%E7%94%9F%E6%95%88%EF%BC%8C%E4%BD%86%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4gradle%E5%86%B2%E7%AA%81%EF%BC%89"><span class="post-toc-text">全局 init.gradle（全局生效，但可能导致gradle冲突）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%AF%E9%80%89%EF%BC%9A%EF%BC%88%E5%BD%93%E4%B8%8A%E4%B8%80%E6%AD%A5%E5%86%B2%E7%AA%81%E5%AF%BC%E8%87%B4%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%E6%97%B6%EF%BC%89Gradle-%E6%9C%AC%E4%BD%93%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F"><span class="post-toc-text">可选：（当上一步冲突导致下载失败时）Gradle 本体下载加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%89%88%E6%9C%AC%E4%B8%8D%E7%A8%B3%E5%AE%9A%E5%AF%BC%E8%87%B4%E5%87%BA%E7%8E%B0%E4%B8%8D%E5%85%BC%E5%AE%B9%E6%97%B6"><span class="post-toc-text">版本不稳定导致出现不兼容时</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E5%85%B3%E8%81%94-Flutter-%E4%B8%8E-Android-SDK"><span class="post-toc-text">第七步：关联 Flutter 与 Android SDK</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-%E5%91%8A%E8%AF%89-Flutter-Android-SDK-%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="post-toc-text">7.1 告诉 Flutter Android SDK 的位置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-%E6%8E%A5%E5%8F%97-Android-%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="post-toc-text">7.2 接受 Android 许可证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AB%E6%AD%A5%EF%BC%9A%E9%AA%8C%E8%AF%81%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="post-toc-text">第八步：验证与运行第一个项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-%E8%BF%90%E8%A1%8C-flutter-doctor"><span class="post-toc-text">8.1 运行 flutter doctor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-%E5%88%9B%E5%BB%BA-Android-%E6%A8%A1%E6%8B%9F%E5%99%A8%EF%BC%88AVD%EF%BC%89"><span class="post-toc-text">8.2 创建 Android 模拟器（AVD）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-3-%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%BF%90%E8%A1%8C%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="post-toc-text">8.3 创建并运行第一个项目</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-text">遇到的问题与解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E2%9D%8C-%E9%97%AE%E9%A2%98%EF%BC%9Aflutter-doctor-android-licenses-%E6%8A%A5%E9%94%99-sdkmanager-not-found"><span class="post-toc-text">❌ 问题：flutter doctor --android-licenses 报错 sdkmanager not found</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E7%BB%88%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="post-toc-text">最终目录结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="post-toc-text">参考资源</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+
 <script>
     var musicConfig = {
         autoplay: false,
         playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
     };
 </script>
-                </aside>
-                <main id="pjax-container">
-                    <div class="card post-full">
+            </aside>
+            <main id="pjax-container">
+                <div class="card post-full">
     <span class="post-title article-title">
         Flutter Android 开发环境配置全记录
     </span>
 
     <div class="post-meta">
-        2026-06-14
+        <i class="ri-calendar-line"></i> 2026-06-14
         
-            | <a class="tag-none-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-none-link" href="/tags/Flutter/" rel="tag">Flutter</a>
-            
+            | <i class="ri-price-tag-3-line"></i> <a class="tag-none-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-none-link" href="/tags/Flutter/" rel="tag">Flutter</a>
+        
+        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv">--</span> 次阅读</span>
     </div>
 
     <div class="post-content">
@@ -403,28 +424,89 @@
 <p><em>作者：LaoQi ·</em> <em><a href="https://blog.qitongxue.online/">LaoQi的秘密基地</a></em></p>
 
     </div>
+
+    <nav class="post-nav">
+        <div class="post-nav-item post-nav-prev">
+            
+                <a href="/2026/10/09/2026%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-nav-link" rel="prev" title="2026年终总结">
+                    <span class="post-nav-label"><i class="ri-arrow-left-s-line"></i> 上一篇</span>
+                    <span class="post-nav-title">2026年终总结</span>
+                </a>
+            
+        </div>
+        <div class="post-nav-item post-nav-next">
+            
+                <a href="/2026/05/15/%E6%83%B3%E5%86%99%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF/" class="post-nav-link" rel="next" title="想写的一些东西">
+                    <span class="post-nav-label">下一篇 <i class="ri-arrow-right-s-line"></i></span>
+                    <span class="post-nav-title">想写的一些东西</span>
+                </a>
+            
+        </div>
+    </nav>
 </div>
-                </main>
-                <div class="sidebar-mask" id="sidebar-mask"></div>
-            </div>
-            <!-- footer -->
-            <footer class="card">
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
     <div class="copyright">
         <p>Copyright © 2026
                 LaoQi
         </p>
-        <p>Powered by Hexo</p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv">--</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv">--</span>
+        </p>
     </div>
 </footer>
     </div>
 
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/responsive.js"></script>
     <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new Pjax({
-                elements: 'a[href]:not([target]):not([data-no-pjax])',
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
                 selectors: [
                     'title',
                     '#pjax-container',

@@ -15,6 +15,7 @@
             <link rel="icon" href="/image/icon/laoqi_icon.png">
         
     
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
@@ -42,7 +43,7 @@
             <li>
                 <a href="/archives" class="button ">
                     <span class="nav-text">
-                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives    
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
                     </span>
                 </a>
             </li>
@@ -56,14 +57,19 @@
             <li>
                 <a href="/friends" class="button ">
                     <span class="nav-text">
-                        <!-- <img src="/image/icon/vista_friend_1.jpg" alt="friends" class="icon"> -->
-                        Friends
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
                     </span>
                 </a>
             </li>
-            
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
         </ul>
-
     </nav>
 </div>
 
@@ -71,9 +77,9 @@
             <span class="menu-icon ri-menu-fill"></span>
         </div>
 
-            <div class="main-layout">
-                <aside id="sidebar">
-                    <div class="widget avatar-widget">
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
     <div class="avatar-bg">
         <a href="/">
             <img src="/image/icon/laoqi_icon.png" class="profile-img">
@@ -132,15 +138,17 @@
     <audio id="audioPlayer"></audio>
 </div>
 
+
+
 <script>
     var musicConfig = {
         autoplay: false,
         playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
     };
 </script>
-                </aside>
-                <main id="pjax-container">
-                    <section class="post-list">
+            </aside>
+            <main id="pjax-container">
+                <section class="post-list">
     
     <article class="card post-item">
         
@@ -256,27 +264,69 @@ More info: ...
 <nav class="page-nav">
     <span class="page-number current">1</span>
 </nav>
-                </main>
-                <div class="sidebar-mask" id="sidebar-mask"></div>
-            </div>
-            <!-- footer -->
-            <footer class="card">
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
     <div class="copyright">
         <p>Copyright © 2026
                 LaoQi
         </p>
-        <p>Powered by Hexo</p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv">--</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv">--</span>
+        </p>
     </div>
 </footer>
     </div>
 
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/responsive.js"></script>
     <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new Pjax({
-                elements: 'a[href]:not([target]):not([data-no-pjax])',
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
                 selectors: [
                     'title',
                     '#pjax-container',

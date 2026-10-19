@@ -15,6 +15,7 @@
             <link rel="icon" href="/image/icon/laoqi_icon.png">
         
     
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
@@ -42,7 +43,7 @@
             <li>
                 <a href="/archives" class="button ">
                     <span class="nav-text">
-                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives    
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
                     </span>
                 </a>
             </li>
@@ -56,14 +57,19 @@
             <li>
                 <a href="/friends" class="button ">
                     <span class="nav-text">
-                        <!-- <img src="/image/icon/vista_friend_1.jpg" alt="friends" class="icon"> -->
-                        Friends
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
                     </span>
                 </a>
             </li>
-            
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
         </ul>
-
     </nav>
 </div>
 
@@ -71,9 +77,9 @@
             <span class="menu-icon ri-menu-fill"></span>
         </div>
 
-            <div class="main-layout">
-                <aside id="sidebar">
-                    <div class="widget avatar-widget">
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
     <div class="avatar-bg">
         <a href="/">
             <img src="/image/icon/laoqi_icon.png" class="profile-img">
@@ -132,24 +138,30 @@
     <audio id="audioPlayer"></audio>
 </div>
 
+
+
+
+
+
 <script>
     var musicConfig = {
         autoplay: false,
         playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
     };
 </script>
-                </aside>
-                <main id="pjax-container">
-                    <div class="card post-full">
+            </aside>
+            <main id="pjax-container">
+                <div class="card post-full">
     <span class="post-title article-title">
         想写的一些东西
     </span>
 
     <div class="post-meta">
-        2026-05-15
+        <i class="ri-calendar-line"></i> 2026-05-15
         
-            | <a class="tag-none-link" href="/tags/ToDo/" rel="tag">ToDo</a>, <a class="tag-none-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a>
-            
+            | <i class="ri-price-tag-3-line"></i> <a class="tag-none-link" href="/tags/ToDo/" rel="tag">ToDo</a>, <a class="tag-none-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a>
+        
+        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv">--</span> 次阅读</span>
     </div>
 
     <div class="post-content">
@@ -157,12 +169,12 @@
      data-hbe-format="4"
      data-wpm="密码错误，请重试。"
      data-whm="密码错误，请重试。"
-     data-salt="fda5c3c6603bf81ae5f2b2375791d282a361380eb8ae1c3deecc1643c29f0c49"
-     data-nonce="7b3ee8a8b11bf7eea32d8dfb"
+     data-salt="89a27b40d33854621420346e9fb03a38371fd785218ec3044e88d917b66f0e4c"
+     data-nonce="592074d04f49efd3ecfc3fc2"
      data-kdf-iterations="250000"
      data-auto-save="true">
   <script id="hbeData" type="hbeData">
-    c0631f498c805ca2c1e2bf2c93cfe8d7464d8273f73b6dfd2e4d14acce833604e427585cd4b3e7915a083728f0fe9a9e23cd606e8514d42deacfaba229efdabe96e88d8350918cdeaaa91a6d47321a9b67af367210cce0edc87543f6433b892558bc4852b820dd4adce8165319c341f8afc8d7676252800439da5a332f998d4f5f17ead3f5bb2dc6c5a8136506d1e1690b45e4953303d35a0fabb83dd611d636256311407403bc541a7b0da1220c53d02bf5910f18ae0d5ab64b0c3fd177df5ce9ac641534832812ec7f164cc32b87a1c5c4c423f57a5c16826dec196499c3ce5f85d67b36e223ee6d73e7a9bc825ac61916b7b74e7e354f10eadacd44241fd4881bf08d1b78787fc32b1b3a7ba5ca6632716da86629971697589847d87e1cc7f47d381881a34e0a32107531d76a4ef4803948069d22f119a7dbc56dd0fcec2f5c5ab6b47c833e369bb4ee76a168a32105dd0c78342e02d65daeeb62efad91531471bf5ad6184f3a4f64248fff7446382075d5f858d5bbaef5e65115f7499373773520344941a0858cdb4645e024ef152c0964da088988dc94c696d8d679a66ff58d90fa7fbd0d2c5ca8984a875b553eb4eba80e82545208cfc91db043cbe352631cabcc5766dbbfda3ae2dc4b9873cfd755d31944b9a380d9e2f09ef82cf1c882e0f4097513b0d396b0fee843820a334731fdc0bcba9ffbf0e140d091b208c0f551bff78d1ecc6dc5bd48a8eab8ade46a7531e55b22ec6ab63bd43b2532f585fc1fd9de8dc74a815fb9db57f83000906b3c69547aaa585d2c5561bc7ce23583488dc86595f5b5dbbfcf55cc2c18239c05e03e838d7ecee9f43a9f65524ff3357f977268b82336d619db8d810e66acba2bab7246a16524754edd27105fcd29f16fb671924bdd870dd700a8fc0f41fd0a44cdb4f4d3099ea915977af75c00dfd8b453f85e7835d88550c90b111ab3b57e5a9d6dd5e47c2ef6a67242919b54246f427c24cd70a10a007c47352548280f15c18a0199448d87119735cb7114ef25f1dd98a82534ada524cd7c6489d2481576d3cb4f046c86d641f5b5b15983f55ed11f3d1701c7581175b679d9ef74137ee2ddf54d9955f1a2ea9c21df1baccd8462d8be8120be079dab4b62a04dfce47b09f7ba40efe590205818a0d1a34d665b6a1343d42cde369e4e49af340fce783446b4c85404886075e0b17c8c1e51e0118e8732b0470bf72d92e3dac5aff480464d3add01b88013e52b6b672f2362d13ae4b8b769c7e92993f6920ae7c49d1748ee2a674c3d2f47468b5783179ff971539c25058d3edf3c82cca88da8dffe1f14831cbe06aaffb567ed1d28c123859f4387bf32889156fa1e8dec12a327116696f224bcb1da0e871cd3fe550b6f5e3b8f2ad992b603bdcde45f6adc4f910db46c174b4083ae4cdb5379f34ed5e511ea42d789b3dceee64e179342509901329536ee837faa2dc23bacad1f0291ae7162bdf78ecc38
+    f14c5e4d1020c7b5a6c741790dc13488e95d2121fc20a73bbb24de2f0889e7799c411394d087fa4eca1eeb151e5251b3726046df6ad6350ad1fd7e24926b378116b625a5e2a6faff5b36a73d7480f5154bd06967038300ba1765ca32436653d53f9043ba054ce196cc9787855346e7c627c96278c4dd438c432aae78d0329e57331d7523c6226078cf9132df729448dab98ee61176b60efc880ea00925900ef62754b0d5549979b9a415c42e1b91e85ba2644050e40395e36581ff284d629e2728d5fa1cebecd3ed315a9ed7227ad439a6b398c82acbe78f64bfc23e53c5cc2bd62916159f0d177f8013d7ad2034c777aab67eb060b77b25a0ca3e61e231937f24e3b9b05001d9eff024f671bd3e28f0a1c9400c5dfdccd00108333c0c5bcc52493c47b9c113aa193348d2b9a2b032a3dc7dfa2e2e1fda9dfd7ed8778b59503e9959e48c6566a927d8bf1caf4968564d88e002791fa3d03a88ca27e18973e37dde91f2a693951199b8f420ff030d8b134b0146da8f106cc32f0e547341ad91620387a6821f90860aca99ab8c67298e98f03b751db420940e344ac282005e288dd34f7dac0c6e1349de4138387224307feaa405dad8fe40052e5c18f93a69e33db60d4b0c769590250ba3a06e4e0e7693f552fa9c02d09917938f0be07222d06bc2648ea1513bfb2cbfa89c9596c2559a7eca0fc944a3fc5806d6738c3cbb884ce4198b189d5bf9ed9c7ee4b03a7495a2a3076a2dc84cda2a1d86d1972ff64875c991adf377777fb9d51e6ad1e55103a80466daa737d0443d2b0b22af60b9fe6e75bec2ab87197afdf27f3a9f1031d56dfa2a0aa8eff81ba4b5bfc5d4d018ef6df68ad60acd08796048417be0678be771091196e7067fc713193e07adf80f7726fbd29a0b37e5b4731c88545ad4e52561f97b5461189c41ddc769386f5613e1866f3f4cd5f6eb1fe6e2cf878696731759c963d603a42e8ca61fa252d45cfe827339ae269f7417f603d4fa385e2ed69ea6bc6aaaee20b7242326ff6041e54318f7913c0ba3b53de84d8b2554504e0ffdb2696eeef74bedc11f2a2e21ce433868d82d3a8a196313d9dd806c55de55ccaffb0fff4b4aa80a4f6adfcd3c5e66e4687b08d91f7015772e110a139ee416a620d450bc22825a4d6985ad6001aa1c80e86af9274f532f421287efd7c4cb8d2b66a0501ec865e297b03103682f1be7a59812dd60b6304d8f7614dcdc6c010f91d2e651b322b0fcb000b7bea32b2a0c64d255733c4ec86e1f2a82a5e8ad2233f0c3fc6a09869e3b4e3ce06998dc2bc4df4eb701dadb247cfd0d9b956ac28b495ef9e9dd49e0b3843bf9a70cb938678291446e3058e5b5c571bf789a069daff1f6a7dd1eec3ceb3dd21e06b9b20cc4ddf5fc1d0f329399813dea43c5e4b6654ec958fd5b0a961d99495998902597aa2fe23cae265238bad4fa299568a910ef2a6c6633f0ec2e23c255002cb42b8173a0cb3e08ffdd3a
   </script>
   <div class="hbe hbe-content">
     <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
@@ -179,28 +191,89 @@
 </div>
 <script data-pjax src="/lib/hbe.9a88ff0505.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
+
+    <nav class="post-nav">
+        <div class="post-nav-item post-nav-prev">
+            
+                <a href="/2026/06/14/Flutter-Android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%85%A8%E8%AE%B0%E5%BD%95/" class="post-nav-link" rel="prev" title="Flutter Android 开发环境配置全记录">
+                    <span class="post-nav-label"><i class="ri-arrow-left-s-line"></i> 上一篇</span>
+                    <span class="post-nav-title">Flutter Android 开发环境配置全记录</span>
+                </a>
+            
+        </div>
+        <div class="post-nav-item post-nav-next">
+            
+                <a href="/2026/04/21/2025%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-nav-link" rel="next" title="2025年终总结">
+                    <span class="post-nav-label">下一篇 <i class="ri-arrow-right-s-line"></i></span>
+                    <span class="post-nav-title">2025年终总结</span>
+                </a>
+            
+        </div>
+    </nav>
 </div>
-                </main>
-                <div class="sidebar-mask" id="sidebar-mask"></div>
-            </div>
-            <!-- footer -->
-            <footer class="card">
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
     <div class="copyright">
         <p>Copyright © 2026
                 LaoQi
         </p>
-        <p>Powered by Hexo</p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv">--</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv">--</span>
+        </p>
     </div>
 </footer>
     </div>
 
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/responsive.js"></script>
     <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new Pjax({
-                elements: 'a[href]:not([target]):not([data-no-pjax])',
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
                 selectors: [
                     'title',
                     '#pjax-container',

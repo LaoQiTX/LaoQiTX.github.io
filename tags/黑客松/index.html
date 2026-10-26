@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>标签: 黑客松 - LaoQi的秘密基地</title>
+    
+    <meta name="description" content="个人博客">
+    
+    
+    <meta name="keywords" content="LaoQi的秘密基地">
+    
+    <link rel="canonical" href="https://blog.laoqiovo.com">
+    <meta name="msvalidate.01" content="E41760d165384ce59d5f5a2f5303Eddd">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+            <link rel="icon" href="/image/icon/laoqi_icon.png">
+        
+    
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header" id="pjax-header">
+    <header class="card">
+        <p class="blog-title">
+            happily coding
+        </p>
+    </header>
+    <nav class="button-bar">
+        <ul class="nav-links">
+            <li>
+                <a href="/" class="button link-home ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_messenger.jpg" alt="home" class="icon">
+                        <span>Home</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_pc_1.jpg" alt="about" class="icon">About
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/friends" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+        <div class="button mobile-menu-btn" id="mobile-menu-btn">
+            <span class="menu-icon ri-menu-fill"></span>
+        </div>
+
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
+    <div class="avatar-bg">
+        <a href="/">
+            <img src="/image/icon/laoqi_icon.png" class="profile-img">
+        </a>
+    </div>
+</div>
+<div class="widget card profile-widget">
+    <div class="profile">
+        <div>LaoQi</div>
+        <div>
+            
+            
+                <a href="https://github.com/LaoQiTX" class="button profile-link" target="_blank" title="Github">
+                    <img src="/image/icon/github.png" class="profile-icon" alt="Github">
+                </a>
+            
+                <a href="https://space.bilibili.com/456265464" class="button profile-link" target="_blank" title="Bilibili">
+                    <img src="/image/icon/bilibili.png" class="profile-icon" alt="Bilibili">
+                </a>
+            
+        
+        </div>
+    </div>
+    <div class="about">
+        个人博客
+    </div>
+</div>
+
+
+<div class="widget music-widget">
+    <div class="player-content">
+        <div class="song-info">
+            <div class="info-bg album-art" id="albumArt"></div>
+            <div class="info-bg title-bar">
+                <span class="song-title" id="songTitle">Loading...</span>
+            </div>
+        </div>
+
+        <div class="info-bg progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="controls">
+            <button class="button play-btn" id="playBtn">
+                <span id="playIcon" class="ri-play-large-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="prevBtn">
+                <span class="ri-skip-back-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="nextBtn">
+                <span class="ri-skip-forward-fill"></span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+</div>
+
+<div id="pjax-toc">
+    
+</div>
+
+<script>
+    var musicConfig = {
+        autoplay: false,
+        playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
+    };
+</script>
+            </aside>
+            <main id="pjax-container">
+                <section class="archive-container">
+    
+    
+        
+        
+            
+                
+                    <div class="card year-group">
+                        <div class="year-header">
+                            2026
+                        </div>
+                        <div class="archive-list">
+        
+        <div class="archive-item">
+            <span class="archive-date">
+                10-26
+            </span>
+            <a class="archive-title" href="/2026/10/26/EnvKit-Windows%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+                EnvKit：把 Windows 环境变量和注册表管理变得顺手一点
+            </a>
+        </div>
+    
+    
+            </div>
+        </div>
+    
+</section>
+
+<nav class="page-nav">
+    <span class="page-number current">1</span>
+</nav>
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
+    <div class="copyright">
+        <p>Copyright © 2026
+                LaoQi
+        </p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv" data-busuanzi="site_uv">—</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv" data-busuanzi="site_pv">—</span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/responsive.js"></script>
+    <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    
+    <script defer src="/js/busuanzi.js" data-provider="tssl" data-enabled="true" data-timeout="8000"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new Pjax({
+                cacheBust: false,
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
+                selectors: [
+                    'title',
+                    '#pjax-container',
+                    '#pjax-header',
+                    '#pjax-toc'
+                ]
+            })
+        })
+    </script>
+    
+</body>
+
+</html>

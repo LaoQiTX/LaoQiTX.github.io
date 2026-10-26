@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EnvKit：把 Windows 环境变量和注册表管理变得顺手一点 - LaoQi的秘密基地</title>
+    
+    <meta name="description" content="从 TRAE 大连黑客松的四小时原型说起，介绍 EnvKit 的环境变量管理、PATH 排查、注册表查看、快照备份和可选 AI 诊断。">
+    
+    
+    <meta name="keywords" content="EnvKit,Windows,Python,黑客松">
+    
+    <link rel="canonical" href="https://blog.laoqiovo.com/2026/10/26/EnvKit-Windows%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+    <meta name="msvalidate.01" content="E41760d165384ce59d5f5a2f5303Eddd">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+            <link rel="icon" href="/image/icon/laoqi_icon.png">
+        
+    
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header" id="pjax-header">
+    <header class="card">
+        <p class="blog-title">
+            happily coding
+        </p>
+    </header>
+    <nav class="button-bar">
+        <ul class="nav-links">
+            <li>
+                <a href="/" class="button link-home ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_messenger.jpg" alt="home" class="icon">
+                        <span>Home</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_pc_1.jpg" alt="about" class="icon">About
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/friends" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+        <div class="button mobile-menu-btn" id="mobile-menu-btn">
+            <span class="menu-icon ri-menu-fill"></span>
+        </div>
+
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
+    <div class="avatar-bg">
+        <a href="/">
+            <img src="/image/icon/laoqi_icon.png" class="profile-img">
+        </a>
+    </div>
+</div>
+<div class="widget card profile-widget">
+    <div class="profile">
+        <div>LaoQi</div>
+        <div>
+            
+            
+                <a href="https://github.com/LaoQiTX" class="button profile-link" target="_blank" title="Github">
+                    <img src="/image/icon/github.png" class="profile-icon" alt="Github">
+                </a>
+            
+                <a href="https://space.bilibili.com/456265464" class="button profile-link" target="_blank" title="Bilibili">
+                    <img src="/image/icon/bilibili.png" class="profile-icon" alt="Bilibili">
+                </a>
+            
+        
+        </div>
+    </div>
+    <div class="about">
+        个人博客
+    </div>
+</div>
+
+
+<div class="widget music-widget">
+    <div class="player-content">
+        <div class="song-info">
+            <div class="info-bg album-art" id="albumArt"></div>
+            <div class="info-bg title-bar">
+                <span class="song-title" id="songTitle">Loading...</span>
+            </div>
+        </div>
+
+        <div class="info-bg progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="controls">
+            <button class="button play-btn" id="playBtn">
+                <span id="playIcon" class="ri-play-large-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="prevBtn">
+                <span class="ri-skip-back-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="nextBtn">
+                <span class="ri-skip-forward-fill"></span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+</div>
+
+<div id="pjax-toc">
+    
+    
+    
+    <div class="widget sidebar-toc-widget">
+        <div class="sidebar-toc-header">
+            <i class="ri-list-check-2"></i> 目录导航
+        </div>
+        <div class="sidebar-toc-content">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E%E9%BB%91%E5%AE%A2%E6%9D%BE%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%B0%8F%E6%97%B6%E8%AF%B4%E8%B5%B7"><span class="post-toc-text">从黑客松的四个小时说起</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%88%91%E6%9C%80%E6%83%B3%E6%8E%A8%E8%8D%90%E7%9A%84%EF%BC%8C%E6%98%AF-PATH-%E6%95%B4%E7%90%86"><span class="post-toc-text">我最想推荐的，是 PATH 整理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8C%E6%B3%A8%E5%86%8C%E8%A1%A8%EF%BC%8C%E4%B9%9F%E6%94%BE%E5%88%B0%E4%B8%80%E8%B5%B7%E7%9C%8B"><span class="post-toc-text">环境变量和注册表，也放到一起看</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8D%E8%AE%A4%E8%AF%86%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%85%88%E5%88%86%E6%9E%90%E4%B8%80%E4%B8%8B"><span class="post-toc-text">不认识的配置，可以先分析一下</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%87%E4%BB%BD%E8%BF%99%E4%BB%B6%E4%BA%8B%EF%BC%8C%E5%80%BC%E5%BE%97%E5%8D%95%E7%8B%AC%E7%95%99%E4%B8%80%E4%B8%AA%E5%85%A5%E5%8F%A3"><span class="post-toc-text">备份这件事，值得单独留一个入口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%83%B3%E8%AF%95%E8%AF%95%E7%9A%84%E8%AF%9D%EF%BC%8C%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%EF%BC%9F"><span class="post-toc-text">想试试的话，怎么运行？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="post-toc-text">直接下载使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E8%BF%90%E8%A1%8C"><span class="post-toc-text">从源码运行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="post-toc-text">写在最后</span></a></li></ol>
+        </div>
+    </div>
+    
+    
+</div>
+
+<script>
+    var musicConfig = {
+        autoplay: false,
+        playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
+    };
+</script>
+            </aside>
+            <main id="pjax-container">
+                <div class="card post-full">
+    <span class="post-title article-title">
+        EnvKit：把 Windows 环境变量和注册表管理变得顺手一点
+    </span>
+
+    <div class="post-meta">
+        <i class="ri-calendar-line"></i> 2026-10-26
+        
+            | <i class="ri-price-tag-3-line"></i> <a class="tag-none-link" href="/tags/EnvKit/" rel="tag">EnvKit</a>, <a class="tag-none-link" href="/tags/Python/" rel="tag">Python</a>, <a class="tag-none-link" href="/tags/Windows/" rel="tag">Windows</a>, <a class="tag-none-link" href="/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/" rel="tag">黑客松</a>
+        
+        
+        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv" data-busuanzi="page_pv">—</span> 次阅读</span>
+        
+    </div>
+
+    <div class="post-content">
+        <p>折腾 Windows 开发环境的时候，我经常会遇到一件事：软件装好了，命令却找不到；PATH 改过几轮，里面又混进了已经卸载的软件和重复的目录。等到真要整理时，还得先去找那个藏得挺深的“环境变量”窗口。</p>
+<p>我之前折腾 Ollama 时，就被这些事烦到了。于是，在 TRAE 大连黑客松上，我花了四个小时做了一个工具：<strong>EnvKit</strong>。</p>
+<p>它把环境变量、PATH、注册表和备份放在同一个桌面工具里，方便查看、修改和排查问题。最近我又重构了界面，继续完善了功能，所以想重新介绍一下这个项目。</p>
+<p><strong>项目地址：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit">LaoQiTX / EnvKit</a></strong></p>
+<p><strong>直接体验：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit/releases/latest">下载最新版本</a></strong>。目前已发布 v2.0.0，提供 Windows x64 免安装版，下载 <code>EnvKit.exe</code> 就可以运行，不需要另外安装 Python。</p>
+<span id="more"></span>
+<h2 id="从黑客松的四个小时说起">从黑客松的四个小时说起</h2>
+<p>2025 年 11 月，我参加了 TRAE 大连黑客松。选题没有特别宏大的背景，就是想解决自己刚遇到的问题：<strong>Windows 自带的环境变量和注册表管理工具，用起来实在不够顺手。</strong></p>
+<p>能不能直接看出哪些路径已经不存在？能不能把重复项找出来？改之前能不能先留一份备份？遇到不认识的变量，能不能顺手查一下它是做什么的？</p>
+<p>这些需求凑在一起，就成了 EnvKit 最初的样子。</p>
+<p>当时项目没有拿奖，不过能在四个小时里把一个自己的需求做出来，还是挺开心的。最初那篇博文也写得很直接：“目前应该还有很多 bug……”</p>
+<p>现在再看，它值得继续做下去的地方，还是这些很具体的使用场景。</p>
+<h2 id="我最想推荐的，是-PATH-整理">我最想推荐的，是 PATH 整理</h2>
+<p>如果你只是偶尔改一个变量，系统自带的窗口也能完成。但安装过几套 Python、Node.js、Java，或者反复迁移过 SDK 目录之后，PATH 很容易变成一张自己都不太记得的清单。</p>
+<p>比如这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">C:\Python312\<br>C:\Python312\Scripts\<br>D:\OldSDK\bin<br>C:\Python312\<br></code></pre></td></tr></table></figure>
+<p>这里最后一项重复了；而 <code>D:\OldSDK\bin</code> 是否还存在，得去磁盘上确认。条目少的时候不难，积累几十项之后，逐个看就很烦了。</p>
+<p>EnvKit 会把 PATH 拆成单独的条目，检查目录是否存在、是否重复、是否有多余分号形成的空条目，也能识别误填成文件的路径。重复判断会考虑 Windows 路径大小写，并展开 <code>%USERPROFILE%</code> 这类环境变量引用。</p>
+<p>选中条目后，可以调整顺序、置顶，或者直接打开对应目录；也提供清理失效项、空条目和重复项的操作。</p>
+<p>这对“装了新版工具，终端却还在调用旧版”的排查很有帮助。PATH 的顺序会影响命令查找，整理完之后，可以重新打开终端，用下面这样的命令核对实际调用位置：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">where.exe python<br>where.exe node<br>where.exe java<br></code></pre></td></tr></table></figure>
+<p>当然，<strong>目录暂时不存在，不一定代表它该被删除</strong>。移动硬盘没接、网络目录不可用，都可能被标成失效项。我的建议是先看清楚结果、手动做一次快照，再决定清理哪些条目。</p>
+<h2 id="环境变量和注册表，也放到一起看">环境变量和注册表，也放到一起看</h2>
+<p>环境变量页面支持切换当前用户和系统作用域，按变量名或值搜索，以及新增、修改和删除。需要修改系统配置时，界面也有权限提示和管理员重启入口。</p>
+<p>对我来说，能清楚区分“这是我的用户变量”还是“这是整台机器的系统变量”，比再堆几个按钮更有用。</p>
+<p>修改环境变量后，程序会向 Windows 广播设置变更通知。不过，已经打开的终端和编辑器不一定会刷新自己的环境，验证时最好重新打开终端；必要时也重启相关软件。</p>
+<p>注册表部分则提供了用户环境变量、系统环境变量、开机自启项、App Paths 等常用位置的快捷入口，也可以填写具体路径查看、编辑键值，并对当前子键做备份。</p>
+<p>我更希望把这一部分当成查看和处理明确配置的入口。注册表里的值各有用途，不能只因为看不懂，或者检测到路径异常，就直接删掉。</p>
+<h2 id="不认识的配置，可以先分析一下">不认识的配置，可以先分析一下</h2>
+<p>EnvKit 还有本地规则诊断，以及可选的大模型分析。</p>
+<p>不配模型也能使用本地规则，检查环境变量和 PATH 的一些常见问题。如果想进一步了解某个变量或注册表值的用途，可以配置兼容 OpenAI Chat Completions 的接口；项目也提供了 DeepSeek、OpenAI 和本地 Ollama 的配置入口。</p>
+<p>我觉得它最有用的场景，是面对一个陌生变量时，先得到一些解释和排查方向，再去查对应软件的文档。</p>
+<p><strong>AI 的分析只是参考，不能代替对修改结果的判断。</strong> 使用远程模型时，选中的配置内容会发送到你配置的接口；其中可能包含用户名、本地目录等信息，发送前也要看一下。</p>
+<p>当前版本还增加了“本地技能箱”，把失效 PATH 检查、跨作用域重复项分析、开发工具链检查等任务做成单独入口，支持先扫描，再选择是否执行修复。</p>
+<h2 id="备份这件事，值得单独留一个入口">备份这件事，值得单独留一个入口</h2>
+<p>每次改环境变量之前，先把旧值复制到记事本，是个好习惯。但我也知道，着急排错的时候，很容易觉得“就改这一下，应该没事”。</p>
+<p>所以 EnvKit 提供了“快照与备份”页面，可以创建环境快照、查看备份内容、定位文件，并按需要恢复。环境变量和注册表子键的备份使用 JSON 文件，存放在程序的 <code>.backup</code> 目录中。</p>
+<p>我比较推荐的用法是：<strong>先建快照，再检查，再修改，最后重新开一个终端验证。</strong> 不要把“有恢复按钮”当成可以随便改的理由，恢复前也要确认备份的内容和作用域。</p>
+<h2 id="想试试的话，怎么运行？">想试试的话，怎么运行？</h2>
+<h3 id="直接下载使用">直接下载使用</h3>
+<p>如果只是想用这个工具，直接去 <a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit/releases/latest">Releases 下载最新版</a>，在 <strong>Assets</strong> 中选择 <code>EnvKit.exe</code> 即可。当前发布的 <a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit/releases/tag/v2.0.0">v2.0.0</a> 提供 Windows x64 免安装单文件版，已内置运行时，<strong>不用安装 Python，也不用自己配置依赖</strong>。</p>
+<p>下载后，把它放到一个方便保存配置和备份的文件夹中，双击运行即可。需要修改系统变量或受保护的注册表项时，再按需要使用管理员权限。</p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit/releases/download/v2.0.0/EnvKit.exe">直接下载 v2.0.0 的 EnvKit.exe</a></strong></p>
+<p>这一版已经重构了界面，支持深色、浅色切换，并采用列表与详情编辑区的双栏布局。基础的环境变量、PATH 和注册表管理不需要先配置大模型，AI 分析可以按需再设置。</p>
+<h3 id="从源码运行">从源码运行</h3>
+<p>如果你想看实现、修改功能，或者自己打包，也可以从源码运行。项目使用 <strong>Python + DearPyGui</strong> 开发，面向 Windows 10 / 11；建议先准备好 Python 3.12 和 Git。</p>
+<p>在 PowerShell 中执行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell">git clone https://github.com/LaoQiTX/EnvKit.git<br><span class="hljs-built_in">cd</span> EnvKit<br><br>python <span class="hljs-literal">-m</span> venv .venv<br>.\.venv\Scripts\python.exe <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">-r</span> EnvKit/requirements.txt<br>.\.venv\Scripts\python.exe EnvKit/main.py<br></code></pre></td></tr></table></figure>
+<p>这里直接使用虚拟环境里的 Python，不需要额外执行激活脚本。</p>
+<p>如果想自己打包成 exe，仓库 README 中提供了 PyInstaller 和 Nuitka 的打包方式，按需参考即可。</p>
+<h2 id="写在最后">写在最后</h2>
+<p>EnvKit 最适合推荐给经常在 Windows 上折腾开发环境的人：装 SDK、换工具版本、配本地模型，或者单纯想看看自己的 PATH 到底堆了些什么。</p>
+<p>它仍然是一个持续调整的个人项目。我希望它能让那些原本很琐碎的配置工作，变得容易查看、容易理解一点。发现问题的话，也欢迎到仓库提 Issue；能附上操作步骤和报错信息，会更方便排查。</p>
+<p>黑客松那天，除了做出这个小工具，我还抽中了一个 TRAE 抱枕。项目没拿奖，抱枕倒是抱回家了。</p>
+<p>从那四个小时留下来的，除了活动的回忆，还有一个能继续改、也确实有使用场景的小项目。这也是我想再把它拿出来推荐一下的原因。</p>
+<p><strong>项目地址：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/EnvKit">LaoQiTX / EnvKit</a></strong></p>
+
+    </div>
+
+    
+    <nav class="post-nav" aria-label="文章翻页">
+        
+        
+        <a href="/2026/10/09/2026%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-nav-link post-nav-next" rel="next">
+            <span class="post-nav-copy">
+                <span class="post-nav-label">下一篇</span>
+                <span class="post-nav-title">2026年终总结</span>
+            </span>
+            <span class="post-nav-arrow" aria-hidden="true">→</span>
+        </a>
+        
+    </nav>
+    
+</div>
+
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
+    <div class="copyright">
+        <p>Copyright © 2026
+                LaoQi
+        </p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv" data-busuanzi="site_uv">—</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv" data-busuanzi="site_pv">—</span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/responsive.js"></script>
+    <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    
+    <script defer src="/js/busuanzi.js" data-provider="tssl" data-enabled="true" data-timeout="8000"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new Pjax({
+                cacheBust: false,
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
+                selectors: [
+                    'title',
+                    '#pjax-container',
+                    '#pjax-header',
+                    '#pjax-toc'
+                ]
+            })
+        })
+    </script>
+    
+</body>
+
+</html>

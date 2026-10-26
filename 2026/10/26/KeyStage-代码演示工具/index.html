@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KeyStage：让代码演示跟上你的讲解节奏 - LaoQi的秘密基地</title>
+    
+    <meta name="description" content="介绍 KeyStage 代码演示扩展：10 个快捷键预设、原位输入、缩进保留与删除重打，附 v1.2.1 VSIX 下载和安装方法。">
+    
+    
+    <meta name="keywords" content="KeyStage,VS Code,开发工具,项目推荐">
+    
+    <link rel="canonical" href="https://blog.laoqiovo.com/2026/10/26/KeyStage-%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA%E5%B7%A5%E5%85%B7/">
+    <meta name="msvalidate.01" content="E41760d165384ce59d5f5a2f5303Eddd">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+            <link rel="icon" href="/image/icon/laoqi_icon.png">
+        
+    
+    <link rel="alternate" type="application/atom+xml" title="LaoQi的秘密基地" href="/atom.xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="header" id="pjax-header">
+    <header class="card">
+        <p class="blog-title">
+            happily coding
+        </p>
+    </header>
+    <nav class="button-bar">
+        <ul class="nav-links">
+            <li>
+                <a href="/" class="button link-home ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_messenger.jpg" alt="home" class="icon">
+                        <span>Home</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_book_1.jpg" alt="posts" class="icon">Archives
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_pc_1.jpg" alt="about" class="icon">About
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/friends" class="button ">
+                    <span class="nav-text">
+                        <img src="/image/icon/vista_photo_gallery.jpg" alt="friends" class="icon">Friends
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="button" id="search-btn" title="搜索文章 (Ctrl+K)">
+                    <span class="nav-text">
+                        <i class="ri-search-2-line" style="font-size: 16px;"></i>
+                        <span>Search</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+        <div class="button mobile-menu-btn" id="mobile-menu-btn">
+            <span class="menu-icon ri-menu-fill"></span>
+        </div>
+
+        <div class="main-layout">
+            <aside id="sidebar">
+                <div class="widget avatar-widget">
+    <div class="avatar-bg">
+        <a href="/">
+            <img src="/image/icon/laoqi_icon.png" class="profile-img">
+        </a>
+    </div>
+</div>
+<div class="widget card profile-widget">
+    <div class="profile">
+        <div>LaoQi</div>
+        <div>
+            
+            
+                <a href="https://github.com/LaoQiTX" class="button profile-link" target="_blank" title="Github">
+                    <img src="/image/icon/github.png" class="profile-icon" alt="Github">
+                </a>
+            
+                <a href="https://space.bilibili.com/456265464" class="button profile-link" target="_blank" title="Bilibili">
+                    <img src="/image/icon/bilibili.png" class="profile-icon" alt="Bilibili">
+                </a>
+            
+        
+        </div>
+    </div>
+    <div class="about">
+        个人博客
+    </div>
+</div>
+
+
+<div class="widget music-widget">
+    <div class="player-content">
+        <div class="song-info">
+            <div class="info-bg album-art" id="albumArt"></div>
+            <div class="info-bg title-bar">
+                <span class="song-title" id="songTitle">Loading...</span>
+            </div>
+        </div>
+
+        <div class="info-bg progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="controls">
+            <button class="button play-btn" id="playBtn">
+                <span id="playIcon" class="ri-play-large-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="prevBtn">
+                <span class="ri-skip-back-fill"></span>
+            </button>
+            <button class="button ctrl-btn" id="nextBtn">
+                <span class="ri-skip-forward-fill"></span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+</div>
+
+<div id="pjax-toc">
+    
+    
+    
+    <div class="widget sidebar-toc-widget">
+        <div class="sidebar-toc-header">
+            <i class="ri-list-check-2"></i> 目录导航
+        </div>
+        <div class="sidebar-toc-content">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E5%86%85%E5%AE%B9%EF%BC%8C%E7%8E%B0%E5%9C%BA%E6%8E%A7%E5%88%B6%E8%8A%82%E5%A5%8F"><span class="post-toc-text">提前准备内容，现场控制节奏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-%E4%B8%AA%E9%A2%84%E8%AE%BE%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%8C%89%E8%AE%B2%E8%A7%A3%E6%AD%A5%E9%AA%A4%E6%8B%86%E5%BC%80"><span class="post-toc-text">10 个预设，可以按讲解步骤拆开</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%8E%B0%E6%9C%89%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%BB%A7%E7%BB%AD%E6%BC%94%E7%A4%BA"><span class="post-toc-text">可以在现有代码中继续演示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A0%E9%99%A4%E5%90%8E%EF%BC%8C%E4%B9%9F%E8%83%BD%E6%8E%A5%E7%9D%80%E6%89%93%E5%9B%9E%E6%9D%A5"><span class="post-toc-text">删除后，也能接着打回来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="post-toc-text">常用快捷键</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD-VSIX-%E5%AE%89%E8%A3%85"><span class="post-toc-text">直接下载 VSIX 安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BC%94%E7%A4%BA%E5%89%8D%EF%BC%8C%E7%AE%80%E5%8D%95%E5%87%86%E5%A4%87%E4%B8%80%E4%B8%8B"><span class="post-toc-text">演示前，简单准备一下</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="post-toc-text">写在最后</span></a></li></ol>
+        </div>
+    </div>
+    
+    
+</div>
+
+<script>
+    var musicConfig = {
+        autoplay: false,
+        playlist: [{"title":"Letter","artist":"Aliya","cover":"https://p1.music.126.net/YDLvbYjfh0Rt0vPsbYaMIA==/109951169721870785.jpg","url":"/music/Letter.mp3"}]
+    };
+</script>
+            </aside>
+            <main id="pjax-container">
+                <div class="card post-full">
+    <span class="post-title article-title">
+        KeyStage：让代码演示跟上你的讲解节奏
+    </span>
+
+    <div class="post-meta">
+        <i class="ri-calendar-line"></i> 2026-10-26
+        
+            | <i class="ri-price-tag-3-line"></i> <a class="tag-none-link" href="/tags/KeyStage/" rel="tag">KeyStage</a>, <a class="tag-none-link" href="/tags/VS-Code/" rel="tag">VS Code</a>, <a class="tag-none-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a>, <a class="tag-none-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%8E%A8%E8%8D%90/" rel="tag">项目推荐</a>
+        
+        
+        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv" data-busuanzi="page_pv">—</span> 次阅读</span>
+        
+    </div>
+
+    <div class="post-content">
+        <p>做代码演示时，有件事挺影响节奏：脑子里正在想下一句怎么讲，手上却漏了一个括号；刚解释完这段逻辑，又得停下来处理缩进。</p>
+<p>如果代码本来就已经准备好了，现场的重点其实是把思路讲清楚，以及控制内容出现的顺序。</p>
+<p>这次想介绍一个我做的 VS Code 扩展：<strong>KeyStage</strong>。提前把演示代码存成预设，现场在编辑器里按普通按键，就能逐步输入准备好的内容，按自己的讲解节奏展开。</p>
+<p><strong>项目地址：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/KeyStage">LaoQiTX / KeyStage</a></strong></p>
+<p><strong>下载使用：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/KeyStage/releases/latest">GitHub Releases</a></strong>，目前发布的是 v1.2.1，提供可直接安装的 <code>.vsix</code> 扩展包。</p>
+<span id="more"></span>
+<h2 id="提前准备内容，现场控制节奏">提前准备内容，现场控制节奏</h2>
+<p>KeyStage 做的事情很直接：你准备好代码，它负责在演示时逐步写入。</p>
+<p>开启某个预设后，按字母、数字、符号，或者 Enter、Tab，都会推进预设内容。实际输出的是提前保存的代码，所以可以边讲边按，不用同时盯着每个字符是否敲对。</p>
+<p>比如，介绍一个函数时，可以先让函数定义出现，停下来讲参数，再继续展开内部逻辑。讲到关键判断时多停一会儿，简单的部分则快一些带过。</p>
+<p>它适合录制教程、技术分享、产品讲解，以及有固定流程的现场代码演示。演示稿需要自己提前准备和验证，KeyStage 不会生成代码，也不会检查预设本身是否正确。</p>
+<h2 id="10-个预设，可以按讲解步骤拆开">10 个预设，可以按讲解步骤拆开</h2>
+<p>KeyStage 支持 <strong>10 个独立预设</strong>，每个都能单独命名和保存多行内容。</p>
+<p>我比较推荐把一场演示拆成几段：第一段搭起结构，第二段补核心逻辑，第三段加入异常处理，最后再放测试或调用示例。这样到了某个环节，直接启动对应预设就好。</p>
+<p>按 <code>Ctrl+Alt+R</code> 可以打开预设管理窗口，选择槽位，填写名称和代码。窗口里也有字符与行数统计、复制到下一槽、清空等操作。</p>
+<p>编辑完记得点击 <strong>“保存全部并关闭”</strong>。切换槽位时会保留尚未保存的草稿，但直接关掉窗口，会放弃这次修改。</p>
+<p>预设按工作区独立保存。演示不同项目时，可以分别准备各自的内容，不用反复覆盖同一份演示稿。</p>
+<h2 id="可以在现有代码中继续演示">可以在现有代码中继续演示</h2>
+<p>演示时经常已经有了一份项目骨架，只需要往某个函数里补几行。KeyStage 可以直接在当前文件的光标位置写入，也支持替换选区，不要求从一个空白文件开始。</p>
+<p>比如，要在函数体内补充下面这段 Python：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">temperature = <span class="hljs-number">24</span><br><span class="hljs-keyword">if</span> temperature &gt; <span class="hljs-number">20</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;适合生长&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>如果光标在行首，预设就需要包含第一行的四个前导空格；如果光标前已经有四个空格，预设第一行就不要再重复加，后续行仍然保留需要的缩进。</p>
+<p>扩展会保留预设中的空格、缩进和换行，并适配目标文件的 LF / CRLF。连续空白会成组写入，所以一个按键有时会连带输出换行和缩进，不用为每个空格单独按一次。</p>
+<p>这里仍需要自己准备好插入位置：它不会根据周围代码推断缩进，也不会自动修复 Python 语法。准备演示稿时，最好连同目标文件一起试一遍。</p>
+<h2 id="删除后，也能接着打回来">删除后，也能接着打回来</h2>
+<p>有时讲到一半，想删掉一段重新展示；或者为了说明某个变化，先把已有的几行去掉。</p>
+<p>KeyStage 会在当前演示会话中按位置记录实际删除的文字。把光标放回删除位置，再按普通键，会优先逐步补回这段内容，补完之后再继续剩余的预设。</p>
+<p>它记录的也可以是原来就有的代码，不限于刚刚输入的部分。退格、Delete、选区删除和跨行删除，都有相应的处理逻辑。</p>
+<p>不过，这份重打记录只属于当前会话。结束演示、切换数字预设、重置进度或重新加载窗口后，会清除记录。它也不代替编辑器的撤销历史，复杂修改之后，可以整理好文件，再重新开始。</p>
+<h2 id="常用快捷键">常用快捷键</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+Alt+R</code></td>
+<td>打开预设管理，并暂停演示</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+1</code>～<code>9</code></td>
+<td>从头启动预设 1～9</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+0</code></td>
+<td>从头启动预设 10</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+D</code></td>
+<td>暂停或继续当前预设</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+Home</code></td>
+<td>重置当前预设进度和删除记录</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>结束接管，恢复正常编辑</td>
+</tr>
+</tbody>
+</table>
+<p>macOS 对应使用 <code>Cmd+Alt</code>。如果和已有快捷键冲突，可以在编辑器的键盘快捷方式中搜索 <code>KeyStage</code>，自行调整。</p>
+<p>这里有个区别：<strong>数字快捷键会从预设开头重新开始，暂停后继续则用 <code>Ctrl+Alt+D</code>。</strong> 切换文件也会暂停，回到原文件后再按需继续。</p>
+<p>预设内容全部输出后，扩展会继续接管输入，避免多按的字符落进代码里。完成演示后，按 <code>Esc</code> 就能退出。</p>
+<h2 id="直接下载-VSIX-安装">直接下载 VSIX 安装</h2>
+<p>不需要自己编译，也不需要配置模型或 API Key。</p>
+<ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/KeyStage/releases/latest">KeyStage 最新 Release</a>，在 <strong>Assets</strong> 中下载 <code>.vsix</code> 文件。当前版本的文件名是 <code>keystage-1.2.1.vsix</code>。</li>
+<li>在 VS Code 打开扩展面板，点击右上角菜单，选择 <strong>“从 VSIX 安装……”</strong>，选中下载的文件。安装或升级后，按编辑器提示重新加载窗口。</li>
+<li>按 <code>Ctrl+Alt+R</code>，在预设 1 中填写名称和准备好的代码，点击“保存全部并关闭”。</li>
+<li>回到目标文件，放好光标，按 <code>Ctrl+Alt+1</code> 启动，然后用普通按键推进内容。结束时按 <code>Esc</code>。</li>
+</ol>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/KeyStage/releases/download/v1.2.1/keystage-1.2.1.vsix">直接下载 v1.2.1 安装包</a></strong></p>
+<p>Trae 等编辑器可以尝试通过各自的 VSIX 安装入口使用，但兼容情况取决于具体版本。目前项目说明中仍标注尚未完成 VS Code / Trae 的界面实机验证，不同编辑器中的快捷键和输入行为，需要实际确认。</p>
+<h2 id="演示前，简单准备一下">演示前，简单准备一下</h2>
+<p>我建议先把完整流程跑一遍，尤其是插入位置、Python 缩进，以及是否有格式化或补全扩展改变内容。</p>
+<p>当前版本只支持单光标，演示时建议使用英文输入法。方向键和其他 Ctrl / Alt 组合仍保留编辑器本来的功能，并不是所有物理按键都会推进代码。</p>
+<p>扩展本身不联网、不采集遥测，预设保存在本地工作区的扩展存储中；演示过程中也不会额外弹出通知或完成窗口。它直接编辑的是当前文件，演示前保留一份干净的代码，结束后检查一下改动，会更方便重复录制。</p>
+<h2 id="写在最后">写在最后</h2>
+<p>KeyStage 想解决的，是代码讲解里一个很小、但很容易打断思路的问题：一边讲，一边把准备好的内容准确地打出来。</p>
+<p>我希望它能让演示者把注意力更多地放在“这一段为什么这么写”“这里应该停下来解释什么”上。内容提前准备，出现的节奏自己掌握，整个演示就能更从容一些。</p>
+<p>如果你也有录教程、做技术分享或者项目讲解的需求，可以下载试试。项目使用 MIT 许可证开源，遇到问题或有功能建议，也欢迎到仓库提 Issue。</p>
+<p><strong>项目地址：<a target="_blank" rel="noopener" href="https://github.com/LaoQiTX/KeyStage">LaoQiTX / KeyStage</a></strong></p>
+
+    </div>
+
+    
+    <nav class="post-nav" aria-label="文章翻页">
+        
+        
+        <a href="/2026/10/26/EnvKit-Windows%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="post-nav-link post-nav-next" rel="next">
+            <span class="post-nav-copy">
+                <span class="post-nav-label">下一篇</span>
+                <span class="post-nav-title">EnvKit：把 Windows 环境变量和注册表管理变得顺手一点</span>
+            </span>
+            <span class="post-nav-arrow" aria-hidden="true">→</span>
+        </a>
+        
+    </nav>
+    
+</div>
+
+            </main>
+            <div class="sidebar-mask" id="sidebar-mask"></div>
+        </div>
+        <!-- footer -->
+        <footer class="card">
+    <div class="copyright">
+        <p>Copyright © 2026
+                LaoQi
+        </p>
+        <p>
+            <a href="/atom.xml" target="_blank" title="RSS Feed"><i class="ri-rss-fill"></i> RSS 订阅</a>
+            &nbsp;·&nbsp;
+            <a href="/sitemap.xml" target="_blank" title="Sitemap"><i class="ri-node-tree"></i> 站点地图</a>
+            &nbsp;·&nbsp;
+            Powered by Hexo
+        </p>
+        <p class="busuanzi-site">
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv" data-busuanzi="site_uv">—</span>
+            &nbsp;·&nbsp;
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv" data-busuanzi="site_pv">—</span>
+        </p>
+    </div>
+</footer>
+
+    </div>
+
+    <!-- Search Modal (Frutiger Aero Dialog) -->
+    <div id="search-modal" class="search-modal">
+        <div id="search-mask" class="search-mask"></div>
+        <div class="card search-dialog">
+            <div class="search-header">
+                <span class="search-header-title">
+                    <i class="ri-search-eye-line"></i> 搜索博客 (Search)
+                </span>
+                <button id="search-close-btn" class="search-close-btn" type="button" title="关闭 (Esc)">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="search-input-wrap">
+                <i class="ri-search-line search-input-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="输入关键词搜索文章..." autocomplete="off">
+            </div>
+            <div id="search-results" class="search-results-wrap">
+                <div class="search-empty">输入关键词，开始探索博客...</div>
+            </div>
+            <div class="search-footer">
+                <span id="search-count">准备就绪</span>
+                <span class="search-key-hints">按 <kbd>ESC</kbd> 退出 / <kbd>Ctrl+K</kbd> 唤起</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/responsive.js"></script>
+    <script src="/js/music.js"></script>
+    <script src="/js/code-copy.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/toc.js"></script>
+    
+    <script defer src="/js/busuanzi.js" data-provider="tssl" data-enabled="true" data-timeout="8000"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new Pjax({
+                cacheBust: false,
+                elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
+                selectors: [
+                    'title',
+                    '#pjax-container',
+                    '#pjax-header',
+                    '#pjax-toc'
+                ]
+            })
+        })
+    </script>
+    
+</body>
+
+</html>

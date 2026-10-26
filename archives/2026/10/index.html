@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>
-        LaoQi的秘密基地
-    </title>
+    <title>归档 - LaoQi的秘密基地</title>
+    
+    <meta name="description" content="个人博客">
+    
+    
+    <meta name="keywords" content="LaoQi的秘密基地">
+    
+    <link rel="canonical" href="https://blog.laoqiovo.com">
+    <meta name="msvalidate.01" content="E41760d165384ce59d5f5a2f5303Eddd">
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -198,12 +205,13 @@
             Powered by Hexo
         </p>
         <p class="busuanzi-site">
-            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv">--</span>
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv" data-busuanzi="site_uv">—</span>
             &nbsp;·&nbsp;
-            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv">--</span>
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv" data-busuanzi="site_pv">—</span>
         </p>
     </div>
 </footer>
+
     </div>
 
     <!-- Search Modal (Frutiger Aero Dialog) -->
@@ -237,12 +245,14 @@
     <script src="/js/code-copy.js"></script>
     <script src="/js/search.js"></script>
     <script src="/js/toc.js"></script>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <script defer src="/js/busuanzi.js" data-provider="tssl" data-enabled="true" data-timeout="8000"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new Pjax({
+                cacheBust: false,
                 elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
                 selectors: [
                     'title',

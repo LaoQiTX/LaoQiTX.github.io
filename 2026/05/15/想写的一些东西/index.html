@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>
-        LaoQi的秘密基地
-    </title>
+    <title>想写的一些东西 - LaoQi的秘密基地</title>
+    
+    <meta name="description" content="这里被加密了，不过如果你认识我，可以联系我要访问密码.">
+    
+    
+    <meta name="keywords" content="思考,ToDo">
+    
+    <link rel="canonical" href="https://blog.laoqiovo.com/2026/05/15/%E6%83%B3%E5%86%99%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF/">
+    <meta name="msvalidate.01" content="E41760d165384ce59d5f5a2f5303Eddd">
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -163,7 +170,9 @@
         
             | <i class="ri-price-tag-3-line"></i> <a class="tag-none-link" href="/tags/ToDo/" rel="tag">ToDo</a>, <a class="tag-none-link" href="/tags/%E6%80%9D%E8%80%83/" rel="tag">思考</a>
         
-        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv">--</span> 次阅读</span>
+        
+        <span class="busuanzi-wrap">| <i class="ri-eye-line"></i> <span id="busuanzi_value_page_pv" data-busuanzi="page_pv">—</span> 次阅读</span>
+        
     </div>
 
     <div class="post-content">
@@ -194,25 +203,30 @@
 <script data-pjax src="/lib/hbe.9a88ff0505.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
 
-    <nav class="post-nav">
-        <div class="post-nav-item post-nav-prev">
-            
-                <a href="/2026/06/14/Flutter-Android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%85%A8%E8%AE%B0%E5%BD%95/" class="post-nav-link" rel="prev" title="Flutter Android 开发环境配置全记录">
-                    <span class="post-nav-label"><i class="ri-arrow-left-s-line"></i> 上一篇</span>
-                    <span class="post-nav-title">Flutter Android 开发环境配置全记录</span>
-                </a>
-            
-        </div>
-        <div class="post-nav-item post-nav-next">
-            
-                <a href="/2026/04/21/2025%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-nav-link" rel="next" title="2025年终总结">
-                    <span class="post-nav-label">下一篇 <i class="ri-arrow-right-s-line"></i></span>
-                    <span class="post-nav-title">2025年终总结</span>
-                </a>
-            
-        </div>
+    
+    <nav class="post-nav" aria-label="文章翻页">
+        
+        <a href="/2026/06/14/Flutter-Android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E5%85%A8%E8%AE%B0%E5%BD%95/" class="post-nav-link post-nav-prev" rel="prev">
+            <span class="post-nav-arrow" aria-hidden="true">←</span>
+            <span class="post-nav-copy">
+                <span class="post-nav-label">上一篇</span>
+                <span class="post-nav-title">Flutter Android 开发环境配置全记录</span>
+            </span>
+        </a>
+        
+        
+        <a href="/2026/04/21/2025%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-nav-link post-nav-next" rel="next">
+            <span class="post-nav-copy">
+                <span class="post-nav-label">下一篇</span>
+                <span class="post-nav-title">2025年终总结</span>
+            </span>
+            <span class="post-nav-arrow" aria-hidden="true">→</span>
+        </a>
+        
     </nav>
+    
 </div>
+
             </main>
             <div class="sidebar-mask" id="sidebar-mask"></div>
         </div>
@@ -230,12 +244,13 @@
             Powered by Hexo
         </p>
         <p class="busuanzi-site">
-            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv">--</span>
+            <i class="ri-user-3-line"></i> 访客 <span id="busuanzi_value_site_uv" data-busuanzi="site_uv">—</span>
             &nbsp;·&nbsp;
-            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv">--</span>
+            <i class="ri-eye-line"></i> 访问量 <span id="busuanzi_value_site_pv" data-busuanzi="site_pv">—</span>
         </p>
     </div>
 </footer>
+
     </div>
 
     <!-- Search Modal (Frutiger Aero Dialog) -->
@@ -269,12 +284,14 @@
     <script src="/js/code-copy.js"></script>
     <script src="/js/search.js"></script>
     <script src="/js/toc.js"></script>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <script defer src="/js/busuanzi.js" data-provider="tssl" data-enabled="true" data-timeout="8000"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             new Pjax({
+                cacheBust: false,
                 elements: 'a[href]:not([target]):not([data-no-pjax]):not([href^="#"]):not([href^="javascript:"])',
                 selectors: [
                     'title',

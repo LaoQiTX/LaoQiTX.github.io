@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /about/
+Allow: /friends/
+Disallow: /downloads/
+
+Sitemap: https://blog.laoqiovo.com/sitemap.xml

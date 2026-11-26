@@ -1344,6 +1344,9 @@ footer {
     font-size: 24px;
   }
 }
+.post-content:has(> .hbe-decrypted-content) > .post-encryption-hint {
+  display: none;
+}
 .post-content .hbe-input-label-default::before {
   background: var(--primary-color);
 }
